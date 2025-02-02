@@ -6,7 +6,12 @@
 The AWS SDK v2 does not provide a simple mechanism to retrieve accessible AWS regions, defined as either having been
 "opted-in" by the AWS account owner, or always accessible by default.
 
-The credentials must provide IAM allow access to the action `ec2.DescribeRegions` for the call to be successful.
+This module provides two approaches to this:
+
+* `ContextWithFixedRegions` allows a known list of regions to be used.
+* `ContextWithRegionsCredentials` stores credentials to allow a call to AWS to retrieve the accessible list.
+
+Where credentials are provided, they must provide IAM allow access to the action `ec2.DescribeRegions` for the call to be successful.
 
 ```go
 func main() {
